@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Intelligence Advisors for Architecture + Health</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            flex-grow: 1;
+            padding: 4rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-header {
+            position: absolute;
+            top: 2.5rem;
+            left: 4rem;
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+        .slide-footer {
+            position: absolute;
+            bottom: 2.5rem;
+            right: 4rem;
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+        .nav-button {
+            position: absolute;
+            bottom: 2rem;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            width: 3.5rem;
+            height: 3.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+        #prevBtn {
+            left: 50%;
+            transform: translateX(-110%);
+        }
+        #nextBtn {
+            right: 50%;
+            transform: translateX(110%);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        .highlight {
+            font-weight: 700;
+            color: #2563eb;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.2em;
+        }
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .slide p {
+            font-size: 1.25em; /* Increase paragraph font size by 25% */
+        }
+
+        /* Title slide specific styling */
+        .title-slide {
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: white;
+            text-align: center;
+        }
+        .title-slide h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        .title-slide p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+        .title-slide .institution {
+            margin-top: 3rem;
+            font-size: 1.25rem;
+        }
+
+        /* Thank you slide */
+        .thank-you-slide {
+             background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+             color: white;
+             text-align: center;
+        }
+         .thank-you-slide h1 {
+            font-size: 5rem;
+         }
+
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 60%;
+            max-width: 800px;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div id="slide1" class="slide active title-slide">
+            <h1>Hybrid Intelligence Advisors</h1>
+            <p>Pioneering the Future of Architectural Research and Practice</p>
+            <div class="institution">
+                A Presentation for the Architecture + Health Program<br>
+                Clemson University
+            </div>
+        </div>
+
+        <!-- Slide 2: Table of Contents -->
+        <div id="slide2" class="slide">
+            <div class="slide-header">Agenda</div>
+            <div class="flex flex-col items-center w-full">
+                <div class="w-auto">
+                    <h2 class="text-4xl mb-12">Table of Contents</h2>
+                    <ul class="text-2xl space-y-6">
+                        <li>What is a Hybrid Intelligence Advisor?</li>
+                        <li>Examples for Academia: Clemson A+H</li>
+                        <li>Examples for Professional Practice</li>
+                        <li>The Development Process</li>
+                        <li>Addressing Key Questions</li>
+                        <li>Justifying HI Advisors Over Existing AI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: What is a Hybrid Intelligence Advisor? -->
+        <div id="slide3" class="slide">
+            <div class="slide-header">Definition</div>
+            <div class="w-[70%] mx-auto">
+                <h2 class="text-4xl mb-8">What is a Hybrid Intelligence Advisor?</h2>
+                <p class="text-2xl leading-relaxed">
+                    A Hybrid Intelligence (HI) Advisor is a sophisticated computational partner that synergistically combines
+                    <span class="highlight">human expertise and intuition</span> with
+                    <span class="highlight">AI's vast computational power and data processing capabilities</span>.
+                </p>
+                <p class="text-2xl leading-relaxed">
+                    It's not about replacing the expert; it's about augmenting their abilities to solve complex problems more effectively and creatively.
+                </p>
+                <div class="mt-8 flex space-x-4">
+                    <button id="augmentationBtn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">Augmentation</button>
+                    <button id="partnershipBtn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">Partnership</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Examples for Clemson Professors -->
+        <div id="slide4" class="slide">
+             <div class="slide-header">For Academia</div>
+            <h2 class="text-4xl mb-8">HI Advisors for Clemson A+H Professors</h2>
+            <div class="grid grid-cols-2 gap-12 text-xl">
+                <div>
+                    <h3 class="text-2xl mb-4 text-blue-700 font-bold">1. Research Grant Proposal Advisor</h3>
+                    <p>An advisor that actively assists faculty in identifying funding opportunities and crafting compelling grant proposals. It streamlines the pre-award process by leveraging data-driven insights.</p>
+                    <ul class="mt-4 text-lg">
+                        <li>Performs <span class="highlight">targeted funding discovery</span> by matching faculty research with specific grant calls.</li>
+                        <li>Provides <span class="highlight">data-driven proposal optimization</span>, suggesting structure and keywords based on successful past grants.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl mb-4 text-blue-700 font-bold">2. Interdisciplinary Curriculum Designer</h3>
+                    <p>A tool to help design innovative courses and curricula that bridge architecture, health, and other relevant fields, ensuring programs remain at the cutting edge.</p>
+                     <ul class="mt-4 text-lg">
+                        <li>Conducts <span class="highlight">automated curriculum mapping</span> to identify knowledge gaps and overlaps across departments.</li>
+                        <li>Aids in <span class="highlight">fostering interdisciplinary connections</span> by suggesting relevant readings, case studies, and potential collaborators.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Examples for Practicing Architects -->
+        <div id="slide5" class="slide">
+             <div class="slide-header">For Practice</div>
+            <h2 class="text-4xl mb-8">HI Advisors for Practicing Architects</h2>
+            <div class="grid grid-cols-2 gap-12 text-xl">
+                <div>
+                    <h3 class="text-2xl mb-4 text-blue-700 font-bold">1. Evidence-Based Design (EBD) Advisor</h3>
+                    <p>This advisor empowers architects to integrate the latest health research directly into their design workflow, ensuring projects are optimized for occupant well-being.</p>
+                     <ul class="mt-4 text-lg">
+                        <li>Provides <span class="highlight">real-time access to a curated EBD research</span> repository during the design phase.</li>
+                        <li>Focuses on <span class="highlight">linking design decisions directly to measurable health outcomes</span>, strengthening the value proposition for clients.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl mb-4 text-blue-700 font-bold">2. Healthy Building Material Advisor</h3>
+                    <p>Navigates the complex world of building materials to help architects make informed decisions based on health, sustainability, and lifecycle cost metrics.</p>
+                     <ul class="mt-4 text-lg">
+                        <li>Utilizes <span class="highlight">toxicology and lifecycle data analysis</span> to evaluate materials beyond simple aesthetics or cost.</li>
+                        <li>Generates <span class="highlight">optimized material specification sheets</span> that align with project health goals and certifications like WELL or LEED.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: How are HI Advisors Developed? -->
+        <div id="slide6" class="slide">
+             <div class="slide-header">Development</div>
+            <div class="w-[70%] mx-auto">
+                <h2 class="text-4xl mb-8">How is an HI Advisor Developed?</h2>
+                <p class="text-2xl mb-8">It's a multi-stage, collaborative process that places domain experts at the center.</p>
+                <ol class="text-xl space-y-4 list-decimal list-inside">
+                    <li><span class="font-bold">Define the Domain:</span> Precisely scope the problem to be solved (e.g., improving healthcare waiting room design).</li>
+                    <li><span class="font-bold">Knowledge Elicitation:</span> Systematically capture and structure the nuanced knowledge of expert architects and health professionals.</li>
+                    <li><span class="font-bold">AI Model Training:</span> Train machine learning models on <span class="highlight">curated, high-quality datasets</span>—not just the open internet.</li>
+                    <li><span class="font-bold">Human-in-the-Loop Interface:</span> Design an intuitive interface that allows for seamless collaboration between the user and the AI.</li>
+                    <li><span class="font-bold">Iterative Refinement:</span> Continuously improve the advisor's performance through <span class="highlight">expert feedback and validation loops</span>.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 7: Anticipated Questions -->
+        <div id="slide7" class="slide">
+            <div class="slide-header">Anticipated Questions</div>
+            <div class="w-[70%] mx-auto">
+                <h2 class="text-4xl mb-8">Mitigating Critical Challenges</h2>
+                <h3 class="text-2xl mb-6 font-bold text-blue-700">How do we handle AI inaccuracy and ensure reliable content?</h3>
+                <p class="text-xl mb-8">Reliability is paramount. Unlike general AI, HI Advisors mitigate inaccuracy through a structured approach:</p>
+                <ul>
+                    <li><span class="highlight">Curation of High-Quality Datasets:</span> Models are trained on vetted, domain-specific information (e.g., peer-reviewed journals, established design guidelines) rather than the entire web.</li>
+                    <li><span class="highlight">Expert Validation Loops:</span> Human experts are integral to the system, constantly reviewing and correcting AI-generated content to refine the model's accuracy over time.</li>
+                    <li><span class="highlight">Transparent Sourcing:</span> The advisor provides clear citations and links to the source material, allowing users to verify information and understand the basis of its recommendations.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Why Not Just Use Existing Tools? -->
+        <div id="slide8" class="slide">
+            <div class="slide-header">Justification</div>
+            <div class="w-[70%] mx-auto">
+                <h2 class="text-4xl mb-8">Why Not Just Use ChatGPT or NotebookLM?</h2>
+                <p class="text-xl mb-6">While powerful, generalist tools lack the specialized, reliable, and integrated nature required for high-stakes professional and academic work. HI Advisors offer distinct, critical advantages:</p>
+                <ul>
+                    <li><span class="highlight">Domain-Specific Expertise:</span> HI Advisors are purpose-built with a deep, structured understanding of Architecture + Health, providing nuanced and context-aware guidance.</li>
+                    <li><span class="highlight">Curated & Reliable Data Sources:</span> They operate on a foundation of trusted, vetted information, ensuring recommendations are accurate and defensible—a crucial factor for grants and building projects.</li>
+                     <li><span class="highlight">Proactive & Structured Guidance:</span> Instead of waiting for a prompt, HI Advisors can guide users through complex workflows (e.g., the stages of grant writing), offering timely, structured advice.</li>
+                    <li><span class="highlight">Integration with Program-Specific Workflows:</span> They can be tailored to connect with Clemson's unique resources, databases, and faculty expertise, creating a seamless and powerful ecosystem.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Slide 9: Thank You -->
+        <div id="slide9" class="slide thank-you-slide">
+            <h1>Thank You</h1>
+            <p class="text-2xl mt-4">Questions & Discussion</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="slide-footer">
+            <span id="slide-number">1</span> 
+        </div>
+        <button id="prevBtn" class="nav-button" title="Previous Slide"><span>&#x276E;</span></button>
+        <button id="nextBtn" class="nav-button" title="Next Slide"><span>&#x276F;</span></button>
+    </div>
+
+    <!-- Modal for Intro Text -->
+    <div id="introModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closeIntroModalBtn" class="close-button">&times;</button>
+            <p class="text-lg">
+                The contemporary discourse surrounding Artificial Intelligence (AI) in creative and professional domains is often characterized by a narrative of automation and replacement. However, this perspective overlooks a more sophisticated and potent paradigm: <span class="highlight">augmentation.</span>
+            </p>
+            <br>
+            <p class="text-lg">
+                The true transformation lies not in creating autonomous agents that supplant human expertise, but in developing collaborative partners that amplify the architect's and researcher's innate creativity, judgment, and domain-specific knowledge. This presentation introduces a framework for a new class of professional tools known as Hybrid Intelligence (HI) Advisors.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal for Partnership Text -->
+    <div id="partnershipModal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="closePartnershipModalBtn" class="close-button">&times;</button>
+            <p class="text-lg">
+                Hybrid Intelligence is not merely a technical combination of software methods but a strategic and philosophical approach to AI development. It is defined as the intentional synthesis of human and machine intelligence, a <span class="highlight">partnership</span> designed to expand human intellect and achieve goals that were previously unreachable by either entity working in isolation. 
+            </p>
+            <br>
+            <p class="text-lg">
+                The foundational principle of HI is that AI systems should be developed as collaborators that augment human capabilities, not as autonomous systems that replace them. 
+                These systems are not opaque "black box" oracles but transparent, interactive partners that leverage AI's formidable analytical power while explicitly preserving and prioritizing human judgment, ethical reasoning, and creative agency.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 9;
+        const slideNumberElement = document.getElementById('slide-number');
+
+        function showSlide(slideIndex) {
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            const newSlide = document.getElementById(`slide${slideIndex}`);
+            if (newSlide) {
+                newSlide.classList.add('active');
+                slideNumberElement.textContent = `${slideIndex} / ${totalSlides}`;
+            }
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight') {
+                document.getElementById('nextBtn').click();
+            } else if (event.key === 'ArrowLeft') {
+                document.getElementById('prevBtn').click();
+            }
+        });
+
+        // Modal logic
+        const augmentationBtn = document.getElementById('augmentationBtn');
+        const introModal = document.getElementById('introModal');
+        const closeIntroModalBtn = document.getElementById('closeIntroModalBtn');
+
+        augmentationBtn.addEventListener('click', () => {
+            introModal.classList.add('visible');
+        });
+
+        closeIntroModalBtn.addEventListener('click', () => {
+            introModal.classList.remove('visible');
+        });
+
+        introModal.addEventListener('click', (event) => {
+            if (event.target === introModal) {
+                introModal.classList.remove('visible');
+            }
+        });
+
+        const partnershipBtn = document.getElementById('partnershipBtn');
+        const partnershipModal = document.getElementById('partnershipModal');
+        const closePartnershipModalBtn = document.getElementById('closePartnershipModalBtn');
+
+        partnershipBtn.addEventListener('click', () => {
+            partnershipModal.classList.add('visible');
+        });
+
+        closePartnershipModalBtn.addEventListener('click', () => {
+            partnershipModal.classList.remove('visible');
+        });
+
+        partnershipModal.addEventListener('click', (event) => {
+            if (event.target === partnershipModal) {
+                partnershipModal.classList.remove('visible');
+            }
+        });
+
+        showSlide(currentSlide); // Show the initial slide
+    </script>
+</body>
+</html>

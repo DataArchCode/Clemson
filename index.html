@@ -38,17 +38,34 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
       }
 
-      /* Responsive padding */
+      /* Content container to limit height to 70% */
+      .slide-content {
+        max-height: 80vh;
+        width: 100%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+      }
+
+      /* Responsive padding and content height */
       @media (min-width: 640px) {
         .slide {
           padding: 2rem;
+        }
+        .slide-content {
+          max-height: 75vh;
         }
       }
       @media (min-width: 1024px) {
         .slide {
           padding: 4rem;
+        }
+        .slide-content {
+          max-height: 80vh;
         }
       }
       @keyframes fadeIn {
@@ -63,14 +80,14 @@
       }
       .slide-header {
         position: absolute;
-        top: 1rem;
+        top: 2rem;
         left: 1rem;
         font-size: 0.875rem;
         color: #64748b;
       }
       .slide-footer {
         position: absolute;
-        bottom: 1rem;
+        bottom: 3rem;
         right: 1rem;
         font-size: 0.875rem;
         color: #64748b;
@@ -80,7 +97,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        bottom: 0.5rem;
+        bottom: 2.5rem;
         left: 1rem;
         font-size: 0.875rem;
         color: #64748b;
@@ -518,79 +535,81 @@
       <!-- Slide 4: Examples for Clemson Professors -->
       <div id="slide4" class="slide">
         <div class="slide-header">For Academia</div>
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
-        >
-          HI Advisors for Clemson A+H Professors
-        </h2>
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
-        >
-          <div>
-            <h3
-              class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
-            >
-              1. Research Grant Proposal Advisor
-            </h3>
-            <p
-              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
-            >
-              An advisor that actively assists faculty in identifying funding
-              opportunities and crafting compelling grant proposals. It
-              streamlines the pre-award process by leveraging data-driven
-              insights.
-            </p>
-            <ul
-              class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
-            >
-              <li>
-                Performs
-                <span class="highlight font-semibold"
-                  >targeted funding discovery</span
-                >
-                by matching faculty research with specific grant calls.
-              </li>
-              <li>
-                Provides
-                <span class="highlight font-semibold"
-                  >data-driven proposal optimization</span
-                >, suggesting structure and keywords based on successful past
-                grants.
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3
-              class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
-            >
-              2. Interdisciplinary Curriculum Designer
-            </h3>
-            <p
-              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
-            >
-              A tool to help design innovative courses and curricula that bridge
-              architecture, health, and other relevant fields, ensuring programs
-              remain at the cutting edge.
-            </p>
-            <ul
-              class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
-            >
-              <li>
-                Conducts
-                <span class="highlight font-semibold"
-                  >automated curriculum mapping</span
-                >
-                to identify knowledge gaps and overlaps across departments.
-              </li>
-              <li>
-                Aids in
-                <span class="highlight font-semibold"
-                  >fostering interdisciplinary connections</span
-                >
-                by suggesting relevant readings, case studies, and potential
-                collaborators.
-              </li>
-            </ul>
+        <div class="slide-content">
+          <h2
+            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
+          >
+            HI Advisors for Clemson A+H Professors
+          </h2>
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
+          >
+            <div>
+              <h3
+                class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
+              >
+                1. Research Grant Proposal Advisor
+              </h3>
+              <p
+                class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
+              >
+                An advisor that actively assists faculty in identifying funding
+                opportunities and crafting compelling grant proposals. It
+                streamlines the pre-award process by leveraging data-driven
+                insights.
+              </p>
+              <ul
+                class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
+              >
+                <li>
+                  Performs
+                  <span class="highlight font-semibold"
+                    >targeted funding discovery</span
+                  >
+                  by matching faculty research with specific grant calls.
+                </li>
+                <li>
+                  Provides
+                  <span class="highlight font-semibold"
+                    >data-driven proposal optimization</span
+                  >, suggesting structure and keywords based on successful past
+                  grants.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3
+                class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
+              >
+                2. Interdisciplinary Curriculum Designer
+              </h3>
+              <p
+                class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
+              >
+                A tool to help design innovative courses and curricula that
+                bridge architecture, health, and other relevant fields, ensuring
+                programs remain at the cutting edge.
+              </p>
+              <ul
+                class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
+              >
+                <li>
+                  Conducts
+                  <span class="highlight font-semibold"
+                    >automated curriculum mapping</span
+                  >
+                  to identify knowledge gaps and overlaps across departments.
+                </li>
+                <li>
+                  Aids in
+                  <span class="highlight font-semibold"
+                    >fostering interdisciplinary connections</span
+                  >
+                  by suggesting relevant readings, case studies, and potential
+                  collaborators.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <!-- Logo -->
@@ -607,78 +626,80 @@
       <!-- Slide 5: Examples for Practicing Architects -->
       <div id="slide5" class="slide">
         <div class="slide-header">For Practice</div>
-        <h2
-          class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
-        >
-          HI Advisors for Practicing Architects
-        </h2>
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
-        >
-          <div>
-            <h3
-              class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
-            >
-              1. Evidence-Based Design (EBD) Advisor
-            </h3>
-            <p
-              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
-            >
-              This advisor empowers architects to integrate the latest health
-              research directly into their design workflow, ensuring projects
-              are optimized for occupant well-being.
-            </p>
-            <ul
-              class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
-            >
-              <li>
-                Provides
-                <span class="highlight font-semibold"
-                  >real-time access to a curated EBD research</span
-                >
-                repository during the design phase.
-              </li>
-              <li>
-                Focuses on
-                <span class="highlight font-semibold"
-                  >linking design decisions directly to measurable health
-                  outcomes</span
-                >, strengthening the value proposition for clients.
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3
-              class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
-            >
-              2. Healthy Building Material Advisor
-            </h3>
-            <p
-              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
-            >
-              Navigates the complex world of building materials to help
-              architects make informed decisions based on health,
-              sustainability, and lifecycle cost metrics.
-            </p>
-            <ul
-              class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
-            >
-              <li>
-                Utilizes
-                <span class="highlight font-semibold"
-                  >toxicology and lifecycle data analysis</span
-                >
-                to evaluate materials beyond simple aesthetics or cost.
-              </li>
-              <li>
-                Generates
-                <span class="highlight font-semibold"
-                  >optimized material specification sheets</span
-                >
-                that align with project health goals and certifications like
-                WELL or LEED.
-              </li>
-            </ul>
+        <div class="slide-content">
+          <h2
+            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
+          >
+            HI Advisors for Practicing Architects
+          </h2>
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
+          >
+            <div>
+              <h3
+                class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
+              >
+                1. Evidence-Based Design (EBD) Advisor
+              </h3>
+              <p
+                class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
+              >
+                This advisor empowers architects to integrate the latest health
+                research directly into their design workflow, ensuring projects
+                are optimized for occupant well-being.
+              </p>
+              <ul
+                class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
+              >
+                <li>
+                  Provides
+                  <span class="highlight font-semibold"
+                    >real-time access to a curated EBD research</span
+                  >
+                  repository during the design phase.
+                </li>
+                <li>
+                  Focuses on
+                  <span class="highlight font-semibold"
+                    >linking design decisions directly to measurable health
+                    outcomes</span
+                  >, strengthening the value proposition for clients.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3
+                class="text-sm sm:text-lg md:text-2xl mb-2 sm:mb-3 md:mb-4 text-blue-700 font-bold"
+              >
+                2. Healthy Building Material Advisor
+              </h3>
+              <p
+                class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-2 sm:mb-3 md:mb-4"
+              >
+                Navigates the complex world of building materials to help
+                architects make informed decisions based on health,
+                sustainability, and lifecycle cost metrics.
+              </p>
+              <ul
+                class="mt-2 sm:mt-3 md:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
+              >
+                <li>
+                  Utilizes
+                  <span class="highlight font-semibold"
+                    >toxicology and lifecycle data analysis</span
+                  >
+                  to evaluate materials beyond simple aesthetics or cost.
+                </li>
+                <li>
+                  Generates
+                  <span class="highlight font-semibold"
+                    >optimized material specification sheets</span
+                  >
+                  that align with project health goals and certifications like
+                  WELL or LEED.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <!-- Logo -->
@@ -695,51 +716,53 @@
       <!-- Slide 6: How are HI Advisors Developed? -->
       <div id="slide6" class="slide">
         <div class="slide-header">Development</div>
-        <div class="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
-          <h2
-            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
-          >
-            How is an HI Advisor Developed?
-          </h2>
-          <p
-            class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8"
-          >
-            It's a multi-stage, collaborative process that places domain experts
-            at the center.
-          </p>
-          <ol
-            class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3 md:space-y-4 list-decimal list-inside"
-          >
-            <li>
-              <span class="font-bold">Define the Domain:</span> Precisely scope
-              the problem to be solved (e.g., improving healthcare waiting room
-              design).
-            </li>
-            <li>
-              <span class="font-bold">Knowledge Elicitation:</span>
-              Systematically capture and structure the nuanced knowledge of
-              expert architects and health professionals.
-            </li>
-            <li>
-              <span class="font-bold">AI Model Training:</span> Train machine
-              learning models on
-              <span class="highlight font-semibold"
-                >curated, high-quality datasets</span
-              >—not just the open internet.
-            </li>
-            <li>
-              <span class="font-bold">Human-in-the-Loop Interface:</span> Design
-              an intuitive interface that allows for seamless collaboration
-              between the user and the AI.
-            </li>
-            <li>
-              <span class="font-bold">Iterative Refinement:</span> Continuously
-              improve the advisor's performance through
-              <span class="highlight font-semibold"
-                >expert feedback and validation loops</span
-              >.
-            </li>
-          </ol>
+        <div class="slide-content">
+          <div class="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
+            >
+              How is an HI Advisor Developed?
+            </h2>
+            <p
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8"
+            >
+              It's a multi-stage, collaborative process that places domain
+              experts at the center.
+            </p>
+            <ol
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3 md:space-y-4 list-decimal list-inside"
+            >
+              <li>
+                <span class="font-bold">Define the Domain:</span> Precisely
+                scope the problem to be solved (e.g., improving healthcare
+                waiting room design).
+              </li>
+              <li>
+                <span class="font-bold">Knowledge Elicitation:</span>
+                Systematically capture and structure the nuanced knowledge of
+                expert architects and health professionals.
+              </li>
+              <li>
+                <span class="font-bold">AI Model Training:</span> Train machine
+                learning models on
+                <span class="highlight font-semibold"
+                  >curated, high-quality datasets</span
+                >—not just the open internet.
+              </li>
+              <li>
+                <span class="font-bold">Human-in-the-Loop Interface:</span>
+                Design an intuitive interface that allows for seamless
+                collaboration between the user and the AI.
+              </li>
+              <li>
+                <span class="font-bold">Iterative Refinement:</span>
+                Continuously improve the advisor's performance through
+                <span class="highlight font-semibold"
+                  >expert feedback and validation loops</span
+                >.
+              </li>
+            </ol>
+          </div>
         </div>
         <!-- Logo -->
         <div class="slide-footer-logo">
@@ -755,49 +778,53 @@
       <!-- Slide 7: Anticipated Questions -->
       <div id="slide7" class="slide">
         <div class="slide-header">Anticipated Questions</div>
-        <div class="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
-          <h2
-            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
-          >
-            Mitigating Critical Challenges
-          </h2>
-          <h3
-            class="text-sm sm:text-lg md:text-2xl mb-3 sm:mb-4 md:mb-6 font-bold text-blue-700"
-          >
-            How do we handle AI inaccuracy and ensure reliable content?
-          </h3>
-          <p
-            class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8"
-          >
-            Reliability is paramount. Unlike general AI, HI Advisors mitigate
-            inaccuracy through a structured approach:
-          </p>
-          <ul
-            class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
-          >
-            <li>
-              <span class="highlight font-semibold"
-                >Curation of High-Quality Datasets:</span
-              >
-              Models are trained on vetted, domain-specific information (e.g.,
-              peer-reviewed journals, established design guidelines) rather than
-              the entire web.
-            </li>
-            <li>
-              <span class="highlight font-semibold"
-                >Expert Validation Loops:</span
-              >
-              Human experts are integral to the system, constantly reviewing and
-              correcting AI-generated content to refine the model's accuracy
-              over time.
-            </li>
-            <li>
-              <span class="highlight font-semibold">Transparent Sourcing:</span>
-              The advisor provides clear citations and links to the source
-              material, allowing users to verify information and understand the
-              basis of its recommendations.
-            </li>
-          </ul>
+        <div class="slide-content">
+          <div class="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
+            >
+              Mitigating Critical Challenges
+            </h2>
+            <h3
+              class="text-sm sm:text-lg md:text-2xl mb-3 sm:mb-4 md:mb-6 font-bold text-blue-700"
+            >
+              How do we handle AI inaccuracy and ensure reliable content?
+            </h3>
+            <p
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-4 sm:mb-6 md:mb-8"
+            >
+              Reliability is paramount. Unlike general AI, HI Advisors mitigate
+              inaccuracy through a structured approach:
+            </p>
+            <ul
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
+            >
+              <li>
+                <span class="highlight font-semibold"
+                  >Curation of High-Quality Datasets:</span
+                >
+                Models are trained on vetted, domain-specific information (e.g.,
+                peer-reviewed journals, established design guidelines) rather
+                than the entire web.
+              </li>
+              <li>
+                <span class="highlight font-semibold"
+                  >Expert Validation Loops:</span
+                >
+                Human experts are integral to the system, constantly reviewing
+                and correcting AI-generated content to refine the model's
+                accuracy over time.
+              </li>
+              <li>
+                <span class="highlight font-semibold"
+                  >Transparent Sourcing:</span
+                >
+                The advisor provides clear citations and links to the source
+                material, allowing users to verify information and understand
+                the basis of its recommendations.
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- Logo -->
         <div class="slide-footer-logo">
@@ -813,55 +840,57 @@
       <!-- Slide 8: Why Not Just Use Existing Tools? -->
       <div id="slide8" class="slide">
         <div class="slide-header">Justification</div>
-        <div class="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
-          <h2
-            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
-          >
-            Why Not Just Use ChatGPT or NotebookLM?
-          </h2>
-          <p
-            class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6"
-          >
-            While powerful, generalist tools lack the specialized, reliable, and
-            integrated nature required for high-stakes professional and academic
-            work. HI Advisors offer distinct, critical advantages:
-          </p>
-          <ul
-            class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
-          >
-            <li>
-              <span class="highlight font-semibold"
-                >Domain-Specific Expertise:</span
-              >
-              HI Advisors are purpose-built with a deep, structured
-              understanding of Architecture + Health, providing nuanced and
-              context-aware guidance.
-            </li>
-            <li>
-              <span class="highlight font-semibold"
-                >Curated & Reliable Data Sources:</span
-              >
-              They operate on a foundation of trusted, vetted information,
-              ensuring recommendations are accurate and defensible—a crucial
-              factor for grants and building projects.
-            </li>
-            <li>
-              <span class="highlight font-semibold"
-                >Proactive & Structured Guidance:</span
-              >
-              Instead of waiting for a prompt, HI Advisors can guide users
-              through complex workflows (e.g., the stages of grant writing),
-              offering timely, structured advice.
-            </li>
-            <li>
-              <span class="highlight font-semibold"
-                >Integration with Program-Specific Workflows:</span
-              >
-              They can be tailored to connect with Clemson's unique resources,
-              databases, and faculty expertise, creating a seamless and powerful
-              ecosystem.
-            </li>
-          </ul>
+        <div class="slide-content">
+          <div class="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
+            <h2
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-4 sm:mb-6 md:mb-8"
+            >
+              Why Not Just Use ChatGPT or NotebookLM?
+            </h2>
+            <p
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-3 sm:mb-4 md:mb-6"
+            >
+              While powerful, generalist tools lack the specialized, reliable,
+              and integrated nature required for high-stakes professional and
+              academic work. HI Advisors offer distinct, critical advantages:
+            </p>
+            <ul
+              class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl space-y-2 sm:space-y-3"
+            >
+              <li>
+                <span class="highlight font-semibold"
+                  >Domain-Specific Expertise:</span
+                >
+                HI Advisors are purpose-built with a deep, structured
+                understanding of Architecture + Health, providing nuanced and
+                context-aware guidance.
+              </li>
+              <li>
+                <span class="highlight font-semibold"
+                  >Curated & Reliable Data Sources:</span
+                >
+                They operate on a foundation of trusted, vetted information,
+                ensuring recommendations are accurate and defensible—a crucial
+                factor for grants and building projects.
+              </li>
+              <li>
+                <span class="highlight font-semibold"
+                  >Proactive & Structured Guidance:</span
+                >
+                Instead of waiting for a prompt, HI Advisors can guide users
+                through complex workflows (e.g., the stages of grant writing),
+                offering timely, structured advice.
+              </li>
+              <li>
+                <span class="highlight font-semibold"
+                  >Integration with Program-Specific Workflows:</span
+                >
+                They can be tailored to connect with Clemson's unique resources,
+                databases, and faculty expertise, creating a seamless and
+                powerful ecosystem.
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- Logo -->
         <div class="slide-footer-logo">
